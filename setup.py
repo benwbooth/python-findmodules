@@ -33,7 +33,6 @@ from setuptools import setup
 setup(
     name='findmodules',
     version='0.1',
-    description='Find project module directory relative to the running script',
     url='https://github.com/benwbooth/python-findmodules',
     author='Ben Booth',
     author_email='benwbooth@gmail.com',
