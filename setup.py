@@ -32,7 +32,7 @@ from setuptools import setup
 
 setup(
     name='findmodules',
-    version='0.2',
+    version='0.3',
     url='https://github.com/benwbooth/python-findmodules',
     author='Ben Booth',
     author_email='benwbooth@gmail.com',
