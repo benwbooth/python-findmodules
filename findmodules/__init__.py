@@ -36,7 +36,7 @@ def init(script=sys.argv[0], base='lib', append=True, ignore=['/','/usr'], realp
         * `throw`: Should an exception be thrown if no modules directory was found? Default is False.
     """
     if type(ignore) is str: ignore = [ignore]
-    script = os.realpath(script) if realpath else os.path.abspath(script)
+    script = os.path.realpath(script) if realpath else os.path.abspath(script)
     path = os.path.dirname(script)
 
     while os.path.dirname(path) != path and (path in ignore or not os.path.isdir(os.path.join(path, base))):
