@@ -26,7 +26,6 @@ import os, os.path, sys
 def init(script=sys.argv[0], base='lib', append=True, ignore=['/','/usr'], realpath=False, pythonpath=False, throw=False):
     """
     Parameters:
-
         * `script`: Path to script file. Default is currently running script file
         * `base`: Name of base module directory to add to sys.path. Default is "lib".
         * `append`: Append module directory to the end of sys.path, or insert at the beginning? Default is to append.
@@ -34,6 +33,8 @@ def init(script=sys.argv[0], base='lib', append=True, ignore=['/','/usr'], realp
         * `realpath`: Should symlinks be resolved first? Default is False.
         * `pythonpath`: Should the modules directory be added to the PYTHONPATH environment variable? Default is False.
         * `throw`: Should an exception be thrown if no modules directory was found? Default is False.
+    Returns:
+        * The path to the modules directory if it was found, otherwise None.
     """
     if type(ignore) is str: ignore = [ignore]
     script = os.path.realpath(script) if realpath else os.path.abspath(script)
@@ -42,14 +43,18 @@ def init(script=sys.argv[0], base='lib', append=True, ignore=['/','/usr'], realp
     while os.path.dirname(path) != path and (path in ignore or not os.path.isdir(os.path.join(path, base))):
         path = os.path.dirname(path)
 
-    if path not in ignore and os.path.isdir(os.path.join(path, base)):
-        if append: sys.path.append(os.path.join(path, base))
-        else: sys.path.insert(1, os.path.join(path, base))
+    modules_dir = os.path.join(path, base)
+    if path not in ignore and os.path.isdir(modules_dir):
+        if append: sys.path.append(modules_dir)
+        else: sys.path.insert(1, modules_dir)
 
         if pythonpath:
             if 'PYTHONPATH' not in os.environ: os.environ['PYTHONPATH'] = ''
-            if not append: os.environ['PYTHONPATH'] += os.path.join(path, base)
+            if not append: os.environ['PYTHONPATH'] += modules_dir
             if os.environ['PYTHONPATH'] != '': os.environ['PYTHONPATH'] += os.pathsep
-            if append: os.environ['PYTHONPATH'] += os.path.join(path, base)
+            if append: os.environ['PYTHONPATH'] += modules_dir
+        return modules_dir
     elif throw:
         raise Exception("Could not find modules directory {} relative to {}" % (base, script))
+
+    return None

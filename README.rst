@@ -25,3 +25,6 @@ Parameters:
     * `realpath`: Should symlinks be resolved first? Default is False.
     * `pythonpath`: Should the modules directory be added to the PYTHONPATH environment variable? Default is False.
     * `throw`: Should an exception be thrown if no modules directory was found? Default is False.
+
+Returns:
+    * The path to the modules directory if it was found, otherwise None.

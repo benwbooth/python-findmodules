@@ -26,13 +26,16 @@ Parameters:
     * `realpath`: Should symlinks be resolved first? Default is False.
     * `pythonpath`: Should the modules directory be added to the PYTHONPATH environment variable? Default is False.
     * `throw`: Should an exception be thrown if no modules directory was found? Default is False.
+
+Returns:
+    * The path to the modules directory if it was found, otherwise None.
 """
 
 from setuptools import setup
 
 setup(
     name='findmodules',
-    version='0.4',
+    version='0.5',
     url='https://github.com/benwbooth/python-findmodules',
     author='Ben Booth',
     author_email='benwbooth@gmail.com',
