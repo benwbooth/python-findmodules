@@ -47,9 +47,9 @@ def init(script=sys.argv[0], base='lib', append=True, ignore=['/','/usr'], realp
         else: sys.path.insert(1, os.path.join(path, base))
 
         if pythonpath:
-            os.environ['PYTHONPATH'] = '' if 'PYTHONPATH' not in os.environ
-            os.environ['PYTHONPATH'] += os.path.join(path, base) if not append
-            os.environ['PYTHONPATH'] += os.pathsep if os.environ['PYTHONPATH'] != ''
-            os.environ['PYTHONPATH'] += os.path.join(path, base) if append
+            if 'PYTHONPATH' not in os.environ: os.environ['PYTHONPATH'] = ''
+            if not append: os.environ['PYTHONPATH'] += os.path.join(path, base)
+            if os.environ['PYTHONPATH'] != '': os.environ['PYTHONPATH'] += os.pathsep
+            if append: os.environ['PYTHONPATH'] += os.path.join(path, base)
     elif throw:
         raise Exception("Could not find modules directory {} relative to {}" % (base, script))
