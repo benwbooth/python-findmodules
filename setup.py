@@ -8,12 +8,10 @@ the `base` argument. If found, the directory is added to sys.path.
 This is useful for sets of scripts that use custom project-specific modules that
 you don't want to install into the system python modules folders.
 
-Example usage:
+Example usage::
 
-``
-import findmodules
-findmodules.init(base='modules', realpath=True)
-``
+    import findmodules
+    findmodules.init(base='modules', realpath=True)
 
 This example will search for a folder called "modules" in the current script's
 directory, and all parent directories. Symlinks will be resolved first. If the
