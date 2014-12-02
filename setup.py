@@ -32,11 +32,12 @@ from setuptools import setup
 
 setup(
     name='findmodules',
-    version='0.1',
+    version='0.2',
     url='https://github.com/benwbooth/python-findmodules',
     author='Ben Booth',
     author_email='benwbooth@gmail.com',
     license='MIT',
     keywords="python module import directory path location folder",
     zip_safe=True,
-    description=__doc__)
+    description=__doc__,
+    packages=['findmodules'])
