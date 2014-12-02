@@ -22,5 +22,6 @@ Parameters:
     * `base`: Name of base module directory to add to sys.path. Default is "lib".
     * `append`: Append module directory to the end of sys.path, or insert at the beginning? Default is to append.
     * `ignore`: List of directories to ignore during the module search. Default is to ignore "/" and "/usr".
-    * `realpath`: Should symlinks be resolved first? Default is True.
+    * `realpath`: Should symlinks be resolved first? Default is False.
     * `pythonpath`: Should the modules directory be added to the PYTHONPATH environment variable? Default is False.
+    * `throw`: Should an exception be thrown if no modules directory was found? Default is False.
