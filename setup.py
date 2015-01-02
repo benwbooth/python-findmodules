@@ -2,7 +2,7 @@ import setuptools, os
 with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as doc:
     __doc__=doc.read()
 
-setup(
+setuptools.setup(
     name='findmodules',
     version='0.6',
     url='https://github.com/benwbooth/python-findmodules',
